@@ -1,0 +1,33 @@
+<mat-toolbar *ngIf="auth.getIslogin() | async" style="height: 8vh">
+  <mat-toolbar
+    class="flex justify-between bg-[#151c48] p-0"
+    style="height: 8vh"
+  >
+    <a href="/home">
+      <h1 class="m-3 text-white">Franchisepedia</h1>
+    </a>
+
+    <button
+      class="p-3 rounded-md text-sm text-white hover:bg-[#1DB4B6] hover:text-white active:bg-[#151c48]"
+      (click)="logout()"
+    >
+      Logout
+    </button>
+  </mat-toolbar>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <mat-nav-list> </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="grid grid-cols-6 h-[92vh]">
+      <div *ngIf="islogin">
+        <app-side-nav></app-side-nav>
+      </div>
+      <div class="col-span-5 m-4">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

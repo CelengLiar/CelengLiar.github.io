@@ -1,0 +1,97 @@
+<p class="text-xl font-bold">Konfirmasi Pembayaran</p>
+<div class="min-h-[75vh]">
+  <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows>
+    <ng-container matColumnDef="id">
+      <th *matHeaderCellDef mat-sort-header class="rounded-l-md">
+        ID transaksi
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="userid">
+      <th *matHeaderCellDef mat-sort-header>User ID</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.userid }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="franchiseid">
+      <th *matHeaderCellDef mat-sort-header>Franchise ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.franchiseid }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="totalamount">
+      <th *matHeaderCellDef mat-sort-header>Total</th>
+      <td mat-cell *matCellDef="let element" class="text-left">
+        Rp {{ element.totalamount | number }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="image">
+      <th *matHeaderCellDef mat-sort-header>Bukti Transfer</th>
+      <td mat-cell *matCellDef="let element" class="text-left">
+        <button
+          (click)="goToLink(element.image)"
+          class="bg-blue-200 py-2 px-4 rounded-md"
+        >
+          Lihat
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="createdate">
+      <th *matHeaderCellDef mat-sort-header>Tanggal Transaksi</th>
+      <td mat-cell *matCellDef="let element" class="text-left">
+        {{ element.createdate }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="aksi">
+      <th *matHeaderCellDef mat-sort-header>Aksi</th>
+      <td mat-cell *matCellDef="let element">
+        <select [(ngModel)]="element.aksi">
+          <option [value]="APPROVE">Approve</option>
+          <option [value]="REJECT">Reject</option>
+        </select>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="submit">
+      <th *matHeaderCellDef mat-sort-header class="rounded-r-md">Submit</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          (click)="submit(element)"
+          class="bg-blue-200 py-2 px-4 rounded-md"
+        >
+          Submit
+        </button>
+      </td>
+    </ng-container>
+
+    <tr
+      mat-header-row
+      *matHeaderRowDef="displayedColumns"
+      class="bg-[#F0EFEF] border-b-0 h-14"
+    ></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      class="hover:cursor-pointer"
+    ></tr>
+  </table>
+  <table>
+    <tr *ngIf="dataSource.filteredData.length == 0">
+      <td class="text-center py-4" [attr.colspan]="displayedColumns.length">
+        Data Tidak Ditemukan
+      </td>
+    </tr>
+  </table>
+</div>
+
+<mat-paginator
+  length="false"
+  [showFirstLastButtons]="true"
+  [pageSizeOptions]="[10, 15, 20, 25]"
+  aria-label="Select Item per page"
+>
+</mat-paginator>

@@ -1,0 +1,29 @@
+<div class="h-screen w-[95vw] grid content-center justify-items-center">
+  <div class="p-8 border border-black w-2/6 rounded-lg">
+    <div class="font-bold text-2xl text-center mb-8">Franchisepedia</div>
+    <div class="justify-center flex mb-4">
+      <input
+        type="text"
+        placeholder="Username"
+        class="w-4/6 border border-black rounded p-3"
+        [(ngModel)]="login.username"
+      />
+    </div>
+    <div class="justify-center flex mb-8">
+      <input
+        type="password"
+        placeholder="Kata sandi"
+        class="w-4/6 border border-black rounded p-3"
+        [(ngModel)]="login.password"
+      />
+    </div>
+    <div class="justify-center flex">
+      <button
+        class="bg-slate-500 p-4 w-32 rounded-lg text-white font-bold"
+        (click)="adminLogin()"
+      >
+        Masuk
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+export type KonfirmasiPembayaran = {
+  id: number;
+  userid: number;
+  franchiseid: number;
+  courierid: number;
+  paymentmethod: string;
+  shippingno: string;
+  refundno: string;
+  receivername: string;
+  phonenumber: string;
+  address: string;
+  image: string;
+  status: string;
+  shoppingamount: number;
+  shippingamount: number;
+  discamount: number;
+  totalamount: number;
+  createdate: Date;
+  aksi?: string;
+};
